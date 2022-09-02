@@ -15,13 +15,23 @@ exports.newProduct = catchAsyncErrors(async (req, res, next) => {
 
 // Get all product  => /api/v1/products?keyword=abc
 exports.getProducts = catchAsyncErrors(async (req, res, next) => {
-  const apiFeatures = new APIFeatures(Product.find(), req.query).search();
+  // 4 product for each page
+  const resPerPage = 4;
+
+  // product total for front end
+  const productCount = await Product.countDocuments();
+
+  const apiFeatures = new APIFeatures(Product.find(), req.query)
+    .search()
+    .filter()
+    .pagination(resPerPage);
 
   const products = await apiFeatures.query;
 
   res.status(200).json({
     success: true,
     count: products.length,
+    productCount,
     products,
   });
 });
