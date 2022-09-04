@@ -4,13 +4,13 @@ const router = express.Router();
 const {
   registerUser,
   loginUser,
-  logout,
   forgotPassword,
   resetPassword,
   getUserProfile,
   updatePassword,
   updateProfile,
-  getAllUsers,
+  logout,
+  allUsers,
   getUserDetails,
   updateUser,
   deleteUser,
@@ -32,11 +32,11 @@ router.route("/me/update").put(isAuthenticatedUser, updateProfile);
 
 router
   .route("/admin/users")
-  .put(isAuthenticatedUser, authorizeRoles("admin"), getAllUsers);
-
+  .get(isAuthenticatedUser, authorizeRoles("admin"), allUsers);
 router
   .route("/admin/user/:id")
   .get(isAuthenticatedUser, authorizeRoles("admin"), getUserDetails)
   .put(isAuthenticatedUser, authorizeRoles("admin"), updateUser)
   .delete(isAuthenticatedUser, authorizeRoles("admin"), deleteUser);
+
 module.exports = router;

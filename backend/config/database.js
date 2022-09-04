@@ -2,11 +2,13 @@ const mongoose = require("mongoose");
 
 const connectDatabase = () => {
   mongoose
-    .connect(process.env.DB_LOCAL_URL, {
+    .connect(process.env.DB_URI, {
       useUnifiedTopology: true,
     })
     .then((con) => {
-      console.log(`Connect DB with HOST: ${con.connection.host}`);
+      console.log(
+        `MongoDB Database connected with HOST: ${con.connection.host}`
+      );
     });
 };
 

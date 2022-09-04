@@ -1,44 +1,40 @@
 class APIFeatures {
-  constructor(query, queryString) {
+  constructor(query, queryStr) {
     this.query = query;
-    this.queryString = queryString;
+    this.queryStr = queryStr;
   }
 
   search() {
-    const keyword = this.queryString.keyword
+    const keyword = this.queryStr.keyword
       ? {
           name: {
-            $regex: this.queryString.keyword,
+            $regex: this.queryStr.keyword,
             $options: "i",
           },
         }
       : {};
 
-    console.log(keyword);
-
     this.query = this.query.find({ ...keyword });
     return this;
   }
+
   filter() {
-    const queryCopy = { ...this.queryString };
+    const queryCopy = { ...this.queryStr };
 
     // Removing fields from the query
     const removeFields = ["keyword", "limit", "page"];
     removeFields.forEach((el) => delete queryCopy[el]);
 
     // Advance filter for price, ratings etc
-    let queryString = JSON.stringify(queryCopy);
-    queryString = queryString.replace(
-      /\b(gt|gte|lt|lte)\b/g,
-      (match) => `$${match}`
-    );
+    let queryStr = JSON.stringify(queryCopy);
+    queryStr = queryStr.replace(/\b(gt|gte|lt|lte)\b/g, (match) => `$${match}`);
 
-    this.query = this.query.find(JSON.parse(queryString));
+    this.query = this.query.find(JSON.parse(queryStr));
     return this;
   }
 
   pagination(resPerPage) {
-    const currentPage = Number(this.queryString.page) || 1;
+    const currentPage = Number(this.queryStr.page) || 1;
     const skip = resPerPage * (currentPage - 1);
 
     this.query = this.query.limit(resPerPage).skip(skip);
