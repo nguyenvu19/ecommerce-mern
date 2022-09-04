@@ -15,8 +15,8 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
     email,
     password,
     avatar: {
-      public_id: "",
-      url: "",
+      public_id: "products/dsvbpny402gelwugv2le",
+      url: "https://res.cloudinary.com/bookit/image/upload/v1608062030/products/dsvbpny402gelwugv2le.jpg",
     },
   });
 
