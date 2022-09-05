@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import MetaData from "./layout/MetaData";
 
+import { useDispatch, useSelector } from "react-redux";
+import { getProducts } from "../actions/productAction";
 const Home = () => {
+  const dispatch = useDispatch();
+
+  const { loading, products, error } = useSelector((state) => state.products);
+
+  useEffect(() => {
+    dispatch(getProducts());
+  }, [dispatch]);
+
   return (
     <>
       <MetaData title={"Buy some thing"} />
