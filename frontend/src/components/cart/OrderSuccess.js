@@ -1,10 +1,10 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import MetaData from "../layout/MetaData";
 
 const OrderSuccess = () => {
   return (
-    <Fragment>
+    <>
       <MetaData title={"Order Success"} />
 
       <div className="row justify-content-center">
@@ -22,7 +22,7 @@ const OrderSuccess = () => {
           <Link to="/orders/me">Go to Orders</Link>
         </div>
       </div>
-    </Fragment>
+    </>
   );
 };
 

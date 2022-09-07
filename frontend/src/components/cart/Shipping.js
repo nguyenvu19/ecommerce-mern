@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import { countries } from "countries-list";
 
 import MetaData from "../layout/MetaData";
@@ -28,7 +28,7 @@ const Shipping = ({ history }) => {
   };
 
   return (
-    <Fragment>
+    <>
       <MetaData title={"Shipping Info"} />
 
       <CheckoutSteps shipping />
@@ -112,7 +112,7 @@ const Shipping = ({ history }) => {
           </form>
         </div>
       </div>
-    </Fragment>
+    </>
   );
 };
 

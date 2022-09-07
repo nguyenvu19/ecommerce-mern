@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { useEffect } from "react";
 
 import MetaData from "../layout/MetaData";
 import CheckoutSteps from "./CheckoutSteps";
@@ -120,7 +120,7 @@ const Payment = ({ history }) => {
   };
 
   return (
-    <Fragment>
+    <>
       <MetaData title={"Payment"} />
 
       <CheckoutSteps shipping confirmOrder payment />
@@ -165,7 +165,7 @@ const Payment = ({ history }) => {
           </form>
         </div>
       </div>
-    </Fragment>
+    </>
   );
 };
 

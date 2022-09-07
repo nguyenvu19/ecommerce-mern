@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Pagination from "react-js-pagination";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
@@ -67,11 +67,11 @@ const Home = ({ match }) => {
   }
 
   return (
-    <Fragment>
+    <>
       {loading ? (
         <Loader />
       ) : (
-        <Fragment>
+        <>
           <MetaData title={"Buy Best Products Online"} />
 
           <h1 id="products_heading">Latest Products</h1>
@@ -79,7 +79,7 @@ const Home = ({ match }) => {
           <section id="products" className="container mt-5">
             <div className="row">
               {keyword ? (
-                <Fragment>
+                <>
                   <div className="col-6 col-md-3 mt-5 mb-5">
                     <div className="px-5">
                       <Range
@@ -157,7 +157,7 @@ const Home = ({ match }) => {
                       ))}
                     </div>
                   </div>
-                </Fragment>
+                </>
               ) : (
                 products.map((product) => (
                   <Product key={product._id} product={product} col={3} />
@@ -182,9 +182,9 @@ const Home = ({ match }) => {
               />
             </div>
           )}
-        </Fragment>
+        </>
       )}
-    </Fragment>
+    </>
   );
 };
 
