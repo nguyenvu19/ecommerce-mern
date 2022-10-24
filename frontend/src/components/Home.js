@@ -1,8 +1,12 @@
 import React from "react";
+import MetaData from "./layout/MetaData";
 
 function Home(props) {
   return (
-    <div classNameName="container container-fluid">
+    <>
+      <MetaData title={"Buy"} />
+      <h1 id="products_heading">Latest Products</h1>
+
       <section id="products" className="container mt-5">
         <div className="row">
           <div className="col-sm-12 col-md-6 col-lg-3 my-3">
@@ -30,7 +34,7 @@ function Home(props) {
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 }
 
