@@ -4,6 +4,7 @@ import MetaData from "./layout/MetaData";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../actions/productActions";
 import Product from "./product/product";
+import Loader from "./layout/Loader";
 
 function Home(props) {
   const dispatch = useDispatch();
@@ -19,7 +20,7 @@ function Home(props) {
   return (
     <>
       {loading ? (
-        <h1>Loading...</h1>
+        <Loader />
       ) : (
         <>
           <MetaData title={"Buy"} />
