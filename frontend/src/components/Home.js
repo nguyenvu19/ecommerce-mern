@@ -8,23 +8,27 @@ import Loader from "./layout/Loader";
 import { useAlert } from "react-alert";
 
 import Pagination from "react-js-pagination";
+import { useParams } from "react-router-dom";
 function Home(props) {
   const [currentPage, setCurrentPage] = useState(1);
 
   const alert = useAlert();
   const dispatch = useDispatch();
+  const params = useParams();
 
   const { loading, products, error, productsCount, resPerPage } = useSelector(
     (state) => state.products
   );
+
+  const keyword = params.keyword;
 
   useEffect(() => {
     if (error) {
       return alert.error(error);
     }
 
-    dispatch(getProducts(currentPage));
-  }, [dispatch, alert, error, currentPage]);
+    dispatch(getProducts(keyword, currentPage));
+  }, [dispatch, alert, error, keyword, currentPage]);
 
   function setCurrentPageNo(pageNumber) {
     setCurrentPage(pageNumber);
