@@ -9,8 +9,16 @@ import { useAlert } from "react-alert";
 
 import Pagination from "react-js-pagination";
 import { useParams } from "react-router-dom";
+
+import Slider from "rc-slider";
+import "rc-slider/assets/index.css";
+
+const { createSliderWithTooltip } = Slider;
+const Range = createSliderWithTooltip(Slider.Range);
+
 function Home(props) {
   const [currentPage, setCurrentPage] = useState(1);
+  const [price, setPrice] = useState([1, 10]);
 
   const alert = useAlert();
   const dispatch = useDispatch();
@@ -27,8 +35,8 @@ function Home(props) {
       return alert.error(error);
     }
 
-    dispatch(getProducts(keyword, currentPage));
-  }, [dispatch, alert, error, keyword, currentPage]);
+    dispatch(getProducts(keyword, currentPage, price));
+  }, [dispatch, alert, error, keyword, currentPage, price]);
 
   function setCurrentPageNo(pageNumber) {
     setCurrentPage(pageNumber);
@@ -42,12 +50,48 @@ function Home(props) {
         <>
           <MetaData title={"Buy"} />
           <h1 id="products_heading">Latest Products</h1>
+
           <section id="products" className="container mt-5">
             <div className="row">
-              {products &&
+              {keyword ? (
+                <>
+                  <div className="col-6 col-md-3 mt-5 mb-5">
+                    <div className="px-5">
+                      <Range
+                        marks={{
+                          1: `$1`,
+                          1000: `$1000`,
+                        }}
+                        min={1}
+                        max={1000}
+                        defaultValue={[1, 1000]}
+                        tipFormatter={(value) => `$${value}`}
+                        tipProps={{ placement: "top", visible: true }}
+                        value={price}
+                        onChange={(price) => setPrice(price)}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="col-6 col-md-9">
+                    <div className="row">
+                      {products &&
+                        products.map((product) => (
+                          <Product
+                            key={product._id}
+                            product={product}
+                            col={4}
+                          />
+                        ))}
+                    </div>
+                  </div>
+                </>
+              ) : (
+                products &&
                 products.map((product) => (
-                  <Product key={product._id} product={product} />
-                ))}
+                  <Product key={product._id} product={product} col={3} />
+                ))
+              )}
             </div>
           </section>
 
