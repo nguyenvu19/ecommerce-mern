@@ -7,6 +7,7 @@ import { useAlert } from "react-alert";
 import Loader from "../layout/Loader";
 
 import { Carousel } from "react-bootstrap";
+import MetaData from "../layout/MetaData";
 
 const ProductDetails = () => {
   const dispatch = useDispatch();
@@ -34,6 +35,7 @@ const ProductDetails = () => {
         <Loader />
       ) : (
         <>
+          <MetaData title={product.name} />
           <div className="row f-flex justify-content-around">
             <div className="col-12 col-lg-5 img-fluid" id="product_image">
               <Carousel pause="hover">
