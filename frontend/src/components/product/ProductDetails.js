@@ -2,12 +2,14 @@ import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { clearErrors, getProductDetails } from "../../actions/productActions";
 import { useAlert } from "react-alert";
+
 import Loader from "../layout/Loader";
+import MetaData from "../layout/MetaData";
 
 import { Carousel } from "react-bootstrap";
-import MetaData from "../layout/MetaData";
+
+import { clearErrors, getProductDetails } from "../../actions/productActions";
 
 const ProductDetails = () => {
   const dispatch = useDispatch();
