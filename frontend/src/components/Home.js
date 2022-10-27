@@ -20,6 +20,8 @@ function Home(props) {
   const [currentPage, setCurrentPage] = useState(1);
   const [price, setPrice] = useState([1, 10]);
   const [category, setCategory] = useState("");
+  const [rating, setRating] = useState(0);
+
   const categories = [
     "Electronics",
     "Cameras",
@@ -55,8 +57,8 @@ function Home(props) {
       return alert.error(error);
     }
 
-    dispatch(getProducts(keyword, currentPage, price, category));
-  }, [dispatch, alert, error, keyword, currentPage, price, category]);
+    dispatch(getProducts(keyword, currentPage, price, category, rating));
+  }, [dispatch, alert, error, keyword, currentPage, price, category, rating]);
 
   function setCurrentPageNo(pageNumber) {
     setCurrentPage(pageNumber);
@@ -112,6 +114,30 @@ function Home(props) {
                               onClick={() => setCategory(category)}
                             >
                               {category}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      <div className="mt-5">
+                        {/* <h4 className="mb-3">Rating<h4/> */}
+
+                        <ul className="pl-0">
+                          {[5, 4, 3, 2, 1].map((star) => (
+                            <li
+                              style={{
+                                cursor: "pointer",
+                                listStyleType: "none",
+                              }}
+                              key={star}
+                              onClick={() => setRating(star)}
+                            >
+                              <div className="rating-outer">
+                                <div
+                                  className="rating-inner"
+                                  style={{ width: `${star * 20}%` }}
+                                ></div>
+                              </div>
                             </li>
                           ))}
                         </ul>
