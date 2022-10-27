@@ -9,6 +9,7 @@ export const authReducer = (state = { user: {} }, action) => {
   switch (action.type) {
     case LOGIN_REQUEST:
       return { loading: false, isAuthenticated: false };
+
     case LOGIN_SUCCESS:
       return {
         ...state,
@@ -16,6 +17,7 @@ export const authReducer = (state = { user: {} }, action) => {
         isAuthenticated: true,
         user: action.payload,
       };
+
     case LOGIN_FAIL:
       return {
         ...state,
