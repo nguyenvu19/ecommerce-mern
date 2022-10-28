@@ -29,7 +29,15 @@ function App() {
 
             <Route path="/login" element={Login} exact />
             <Route path="/register" element={Register} exact />
-            <ProtectedRoute path="/me" element={Profile} exact />
+            <Route
+              path="/me"
+              element={
+                <ProtectedRoute>
+                  <Profile />
+                </ProtectedRoute>
+              }
+              exact
+            />
           </Routes>
         </div>
         <Footer />
