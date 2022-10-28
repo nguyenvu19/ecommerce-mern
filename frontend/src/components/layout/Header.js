@@ -5,12 +5,18 @@ import { useDispatch, useSelector } from "react-redux";
 
 import "../../App.css";
 import Search from "./Search";
+import { logout } from "../../actions/userAction";
 
 function Header() {
   const alert = useAlert();
   const dispatch = useDispatch();
 
   const { user, loading } = useSelector((state) => state.auth);
+
+  function handleLogout() {
+    dispatch(logout());
+    alert.success("Logout success!");
+  }
 
   return (
     <>
@@ -76,7 +82,7 @@ function Header() {
                 <Link
                   className="dropdown-item text-danger"
                   to="/"
-                  // onClick={logoutHandler}
+                  onClick={handleLogout}
                 >
                   Logout
                 </Link>
