@@ -166,7 +166,7 @@ export const forgotPassword = (email) => async (dispatch) => {
 // Reset password
 export const resetPassword = (token, passwords) => async (dispatch) => {
   try {
-    dispatch({ type: FORGOT_PASSWORD_REQUEST });
+    dispatch({ type: NEW_PASSWORD_REQUEST });
 
     const config = {
       headers: {
@@ -174,12 +174,16 @@ export const resetPassword = (token, passwords) => async (dispatch) => {
       },
     };
 
-    const { data } = await axios.put(`/api/v1/password/forgot`, email, config);
+    const { data } = await axios.put(
+      `/api/v1/password/reset/${token}`,
+      passwords,
+      config
+    );
 
-    dispatch({ type: FORGOT_PASSWORD_SUCCESS, payload: data.message });
+    dispatch({ type: NEW_PASSWORD_SUCCESS, payload: data.success });
   } catch (error) {
     dispatch({
-      type: FORGOT_PASSWORD_FAIL,
+      type: NEW_PASSWORD_FAIL,
       payload: error.response.data.message,
     });
   }
