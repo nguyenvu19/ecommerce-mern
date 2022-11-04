@@ -34,7 +34,7 @@ const ProductDetails = () => {
     }
   }, [dispatch, alert, error, params.id]);
 
-  function decreaseQty() {
+  function increaseQty() {
     const count = document.querySelector(".count");
 
     // Check product rest in stock
@@ -44,7 +44,7 @@ const ProductDetails = () => {
     setQuantity(qty);
   }
 
-  function increaseQty() {
+  function decreaseQty() {
     const count = document.querySelector(".count");
 
     if (count.valueAsNumber <= 1) return;
