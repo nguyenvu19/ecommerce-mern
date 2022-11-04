@@ -10,6 +10,7 @@ import MetaData from "../layout/MetaData";
 import { Carousel } from "react-bootstrap";
 
 import { clearErrors, getProductDetails } from "../../actions/productActions";
+import { addItemToCart } from "../../actions/cartAction";
 
 const ProductDetails = () => {
   const [quantity, setQuantity] = useState(1);
@@ -50,6 +51,12 @@ const ProductDetails = () => {
 
     const qty = count.valueAsNumber - 1;
     setQuantity(qty);
+  }
+
+  function addToCart() {
+    dispatch(addItemToCart(params.id, quantity));
+
+    alert.success("Item added to cart");
   }
 
   return (
@@ -112,6 +119,8 @@ const ProductDetails = () => {
                 type="button"
                 id="cart_btn"
                 className="btn btn-primary d-inline ml-4"
+                disable={product.stock === 0}
+                onClick={addToCart}
               >
                 Add to Cart
               </button>
