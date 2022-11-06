@@ -8,12 +8,16 @@ import Loader from "../layout/Loader";
 import MetaData from "../layout/MetaData";
 
 import { Carousel } from "react-bootstrap";
-import { addItemToCart } from "../../actions/cartAction";
+import { addItemToCart, removeItemFromCart } from "../../actions/cartAction";
 
 const Cart = () => {
   const dispatch = useDispatch();
 
   const { cartItems } = useSelector((state) => state.cart);
+
+  function removeCartHandler(id) {
+    dispatch(removeItemFromCart(id));
+  }
 
   function increaseQty(id, quantity, stock) {
     const newQty = quantity + 1;
@@ -47,7 +51,7 @@ const Cart = () => {
               {cartItems.map((item) => (
                 <>
                   <hr />
-                  <div className="cart-item">
+                  <div className="cart-item" key={item.product}>
                     <div className="row">
                       <div className="col-4 col-lg-3">
                         <img
@@ -104,6 +108,7 @@ const Cart = () => {
                         <i
                           id="delete_cart_item"
                           className="fa fa-trash btn btn-danger"
+                          onClick={() => removeCartHandler(item.product)}
                         ></i>
                       </div>
                     </div>
