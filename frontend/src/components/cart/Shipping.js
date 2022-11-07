@@ -7,6 +7,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 
 import { saveShippingInfo } from "../../actions/cartAction";
 import MetaData from "../layout/MetaData";
+import CheckoutSteps from "./CheckoutSteps";
 
 const Shipping = () => {
   const countriesList = Object.values(countries);
@@ -33,6 +34,8 @@ const Shipping = () => {
   return (
     <>
       <MetaData title="Shipping info" />
+
+      <CheckoutSteps shipping />
 
       <div className="col-10 col-lg-5">
         <form className="shadow-lg" onSubmit={submitHandler}>
