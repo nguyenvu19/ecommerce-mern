@@ -1,17 +1,14 @@
 import React from "react";
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
-import { useAlert } from "react-alert";
+import { Link, useNavigate } from "react-router-dom";
 
-import Loader from "../layout/Loader";
 import MetaData from "../layout/MetaData";
 
-import { Carousel } from "react-bootstrap";
 import { addItemToCart, removeItemFromCart } from "../../actions/cartAction";
 
 const Cart = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { cartItems } = useSelector((state) => state.cart);
 
@@ -34,6 +31,11 @@ const Cart = () => {
 
     dispatch(addItemToCart(id, newQty));
   }
+
+  function checkoutHandler() {
+    navigate("/login?redirect=shipping");
+  }
+
   return (
     <>
       <MetaData title="Cart" />
@@ -145,7 +147,11 @@ const Cart = () => {
                 </p>
 
                 <hr />
-                <button id="checkout_btn" className="btn btn-primary btn-block">
+                <button
+                  id="checkout_btn"
+                  className="btn btn-primary btn-block"
+                  onClick={checkoutHandler}
+                >
                   Check out
                 </button>
               </div>
