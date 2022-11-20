@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Home from "./components/Home";
 import Footer from "./components/layout/Footer";
 import Header from "./components/layout/Header";
@@ -18,10 +18,21 @@ import NewPassword from "./components/user/NewPassword";
 import Cart from "./components/cart/Cart";
 import Shipping from "./components/cart/Shipping";
 import ConfirmOrder from "./components/cart/ConfirmOrder";
+import axios from "axios";
 
 function App() {
+  const [stripeApiKey, setStripeApiKey] = useState("");
+
   useEffect(() => {
     store.dispatch(loadUser());
+
+    async function getStripeApiKey() {
+      const { data } = await axios.get("/api/v1/stripapi");
+
+      setStripeApiKey(data);
+    }
+
+    getStripeApiKey();
   }, []);
 
   return (
