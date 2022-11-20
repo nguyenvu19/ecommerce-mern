@@ -1,3 +1,4 @@
+// Adding stripe
 const express = require("express");
 const router = express.Router();
 

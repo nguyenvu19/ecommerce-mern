@@ -1,3 +1,4 @@
+// Adding stripe
 const catchAsyncErrors = require("../middlewares/catchAsyncErrors");
 
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
