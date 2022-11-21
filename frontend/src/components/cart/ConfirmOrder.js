@@ -1,11 +1,8 @@
-import React, { useState } from "react";
-
-import { countries } from "countries-list";
+import React from "react";
 
 import { useSelector } from "react-redux";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-import { saveShippingInfo } from "../../actions/cartAction";
 import MetaData from "../layout/MetaData";
 import CheckoutSteps from "./CheckoutSteps";
 

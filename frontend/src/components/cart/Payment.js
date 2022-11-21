@@ -1,21 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
-import { countries } from "countries-list";
-
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate, useParams } from "react-router-dom";
 import { useAlert } from "react-alert";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
-import { saveShippingInfo } from "../../actions/cartAction";
 import MetaData from "../layout/MetaData";
 import CheckoutSteps from "./CheckoutSteps";
 
 import {
-  useStripe,
-  useElements,
-  CardNumberElement,
-  CardExpiryElement,
   CardCvcElement,
+  CardExpiryElement,
+  CardNumberElement,
+  useElements,
+  useStripe,
 } from "@stripe/react-stripe-js";
 import axios from "axios";
 import { clearErrors, createOrder } from "../../actions/orderAction";

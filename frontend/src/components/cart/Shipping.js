@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { countries } from "countries-list";
 
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { saveShippingInfo } from "../../actions/cartAction";
 import MetaData from "../layout/MetaData";
