@@ -16,6 +16,7 @@ import {
 } from "../../actions/productActions";
 import { addItemToCart } from "../../actions/cartAction";
 import { NEW_REVIEW_RESET } from "../../constants/productConstants";
+import ListReviews from "../review/ListReviews";
 
 const ProductDetails = () => {
   const [quantity, setQuantity] = useState(1);
@@ -300,6 +301,10 @@ const ProductDetails = () => {
               </div>
             </div>
           </div>
+
+          {product.reviews && product.reviews.length > 0 && (
+            <ListReviews reviews={product.reviews} />
+          )}
         </>
       )}
     </>
