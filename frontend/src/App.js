@@ -24,6 +24,7 @@ import Payment from "./components/cart/Payment";
 // Payment
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import OrderSuccess from "./components/cart/OrderSuccess";
 
 function App() {
   const [stripeApiKey, setStripeApiKey] = useState("");
@@ -67,6 +68,16 @@ function App() {
               element={
                 <ProtectedRoute>
                   <ConfirmOrder />
+                </ProtectedRoute>
+              }
+              exact
+            />
+
+            <Route
+              path="/success"
+              element={
+                <ProtectedRoute>
+                  <OrderSuccess />
                 </ProtectedRoute>
               }
               exact
