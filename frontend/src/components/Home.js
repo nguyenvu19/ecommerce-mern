@@ -3,7 +3,7 @@ import MetaData from "./layout/MetaData";
 
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../actions/productActions";
-import Product from "./product/product";
+import Product from "./product/Product";
 import Loader from "./layout/Loader";
 import { useAlert } from "react-alert";
 

@@ -9,7 +9,7 @@ const SideBar = () => {
           <ul className="list-unstyled components">
             <li>
               <Link to="/dashboard">
-                <i className="fa fa-tachometer-alt"></i> Dashboard
+                <i className="fa fa-tachometer"></i> Dashboard
               </Link>
             </li>
 
